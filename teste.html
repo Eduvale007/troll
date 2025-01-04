@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>####</title>
+    <style>
+        body {
+            background: black;
+            color: green;
+            font-family: monospace;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .console {
+            width: 80%;
+            height: 50%;
+            border: 1px solid green;
+            padding: 10px;
+            overflow-y: auto;
+            background: black;
+        }
+        .typing {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="console" id="console">
+        <p>Iniciando a invasão...</p>
+    </div>
+    <span class="typing" id="typing">|</span>
+    <script>
+        const consoleDiv = document.getElementById('console');
+        const typingCursor = document.getElementById('typing');
+
+        const fakeLogs = [
+            "Acessando dispositivo...",
+            "Ignorando sistema de segurança...",
+            "Hackeando senha de desbloqueio...",
+            "Acesso root concedido...",
+            "Espiando mensagens de texto...",
+            "Acessando fotos pessoais...",
+            "Copiando fotos...",
+            "Filtrando dados...",
+            "Dispositivo  invadido..."
+        ];
+
+        let logIndex = 0;
+
+        
+        function addLog() {
+            if (logIndex < fakeLogs.length) {
+                const log = document.createElement('p');
+                log.textContent = fakeLogs[logIndex];
+                consoleDiv.appendChild(log);
+                consoleDiv.scrollTop = consoleDiv.scrollHeight;
+                logIndex++;
+            } else {
+                clearInterval(logInterval);
+                typingCursor.style.display = "none";
+            }
+        }
+
+        const logInterval = setInterval(addLog, 1000);
+
+    
+        setInterval(() => {
+            typingCursor.style.opacity = typingCursor.style.opacity === "1" ? "0" : "1";
+        }, 500);
+    </script>
+</body>
+</html>
